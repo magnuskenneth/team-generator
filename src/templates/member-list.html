@@ -1,0 +1,15 @@
+<style>
+    .member-list {
+        sl-icon-button {
+            margin-left: 1rem;
+        }
+    }
+</style>
+<ul class="member-list">
+    {{#members}}
+    <li>
+        {{ . }}
+        <sl-icon-button hx-target="#members" hx-delete="/member/delete/{{ . }}" name="trash" label="remove member">
+    </li>
+    {{/members}}
+</ul>

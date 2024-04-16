@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: var(--sl-font-sans);
+                margin: 0;
+                padding: 1rem;
+            }
+
+            main {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem;
+                border-bottom: 1px solid var(--sl-color-neutral-200);
+            }
+
+            li:last-child {
+                border-bottom: none;
+            }
+
+            li:hover {
+                background-color: var(--sl-color-neutral-100);
+            }
+
+            sl-button {
+                margin-top: 1rem;
+            }
+
+            #teams {
+                margin-top: 2rem;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 1rem;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+        <script>
+            function clearMemberInput() {
+                document.getElementById('member-input').value = '';
+            }
+        </script>
+    </head>
+    <body hx-ext="shoelace">
+        <main>
+            <h1>{{ title }}</h1>
+            <form hx-on:submit="clearMemberInput()" hx-post="/member/add" hx-target="#members" hx-swap="innerHTML">
+                <sl-input id="member-input" name="member" label="Team member name" help-text="Enter the name of the team member to add"></sl-input>
+                <sl-button variant="primary" type="submit">Add team member</sl-button>
+            </form>
+            <div id="members">{{{ membersList }}}</div>
+            <form hx-post="/team/divide" hx-target="#teams" hx-swap="innerHTML">
+                <sl-input name="nr-of-teams" value="2" type="number" label="Number of teams" help-text="The number of teams you want to divide the group into"></sl-input>
+                <sl-button variant="primary" type="submit">Divide into teams</sl-button>
+            </form>
+            <div id="teams">{{{ teamsList }}}</div>
+        </main>
+        <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
+        <script src="/static/htmx.ext.shoelace.js"></script>
+        <!-- <script src="https://unpkg.com/htmx.org@1.9.11/dist/htmx.js" integrity="sha384-l9bYT9SL4CAW0Hl7pAOpfRc18mys1b0wK4U8UtGnWOxPVbVMgrOdB+jyz/WY8Jue" crossorigin="anonymous"></script> -->
+    </body>
+</html>
