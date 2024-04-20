@@ -1,6 +1,6 @@
 # team-generator
 
-I created this app to test [bun](https://bun.sh/), [htmx](https://htmx.org/) and [shoelace](https://shoelace.style/) 🤓
+I created this app to test [bun](https://bun.sh/), [htmx](https://htmx.org/), [hono](https://hono.dev/) and [shoelace](https://shoelace.style/) 🤓
 
 Add members and divide them into teams, where each team will get a reandom team name 🫸🌟🫷
 
