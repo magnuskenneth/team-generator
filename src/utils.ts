@@ -5,7 +5,7 @@ export const generateTeamName = () => {
 }
 
 
-export const importHtmlAsString = (path) => {
+export const importHtmlAsString = (path: string) => {
     const file = Bun.file(path);
     return file.text();
 }
